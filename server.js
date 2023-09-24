@@ -4,8 +4,13 @@ const router = jsonServer.router("db.json"); // Adjust the path to your JSON dat
 const middlewares = jsonServer.defaults();
 
 // Enable CORS
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
 const cors = require("cors");
-server.use(cors());
+server.use(cors(corsOptions));
 
 server.use(middlewares);
 server.use(router);
